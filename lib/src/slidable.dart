@@ -29,7 +29,11 @@ class Slidable extends StatefulWidget {
     this.dragStartBehavior = DragStartBehavior.down,
     this.useTextDirection = true,
     required this.child,
+    this.onInteract,
   }) : super(key: key);
+
+  ///executes when [Slidable] detects gesture
+  final VoidCallback? onInteract;
 
   /// The Slidable widget controller.
   final SlidableController? controller;
@@ -270,6 +274,7 @@ class _SlidableState extends State<Slidable>
     );
 
     return SlidableGestureDetector(
+      onIntereact: widget.onInteract,
       enabled: widget.enabled,
       controller: controller,
       direction: widget.direction,
